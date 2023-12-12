@@ -53,8 +53,6 @@ func main() {
 	} else if contains(numeral, b) && contains(roman, a) {
 		fmt.Println("Вывод ошибки, так как используются одновременно разные системы счисления.")
 	} else {
-		var z string
-		fmt.Scan(&z)
 		fmt.Print("Вывод ошибки, так как строка не является математической операцией.")
 	}
 }
