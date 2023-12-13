@@ -8,13 +8,16 @@ import (
 func main() {
 	roman := []string{"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX", "XXI", "XXII", "XXIII", "XXIV", "XXV", "XXVI", "XXVII", "XXVIII", "XXIX", "XXX", "XXXI", "XXXII", "XXXIII", "XXXIV", "XXXV", "XXXVI", "XXXVII", "XXXVIII", "XXXIX", "XL", "XLI", "XLII", "XLIII", "XLIV", "XLV", "XLVI", "XLVII", "XLVIII", "XLIX", "L", "LI", "LII", "LIII", "LIV", "LV", "LVI", "LVII", "LVIII", "LIX", "LX", "LXI", "LXII", "LXIII", "LXIV", "LXV", "LXVI", "LXVII", "LXVIII", "LXIX", "LXX", "LXXI", "LXXII", "LXXIII", "LXXIV", "LXXV", "LXXVI", "LXXVII", "LXXVIII", "LXXIX", "LXXX", "LXXXI", "LXXXII", "LXXXIII", "LXXXIV", "LXXXV", "LXXXVI", "LXXXVII", "LXXXVIII", "LXXXIX", "XC", "XCI", "XCII", "XCIII", "XCIV", "XCV", "XCVI", "XCVII", "XCVIII", "XCIX", "C"}
 	numeral := []string{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}
-	var a, s, b string
-	fmt.Scanln(&a, &s, &b)
-
+	action := []string{"/", "*", "-", "+"}
+	var a, s, b, d string
+	fmt.Scanln(&a, &s, &b, &d)
 	a = strings.ToUpper(a)
 	b = strings.ToUpper(b)
-
-	if contains(roman, a) && contains(roman, b) {
+    if !contains(action, s) {
+	    fmt.Print("Вывод ошибки, так как строка не является математической операцией.")
+    } else if contains(action, d) {
+        fmt.Print("Вывод ошибки, так как формат математической операции не удовлетворяет заданию — два операнда и один оператор (+, -, /, *).")
+    } else if contains(roman, a) && contains(roman, b) {
 		switch s {
 		case "+":
 			otvet := indexOf(roman, a) + indexOf(roman, b) + 1
@@ -53,6 +56,8 @@ func main() {
 	} else if contains(numeral, b) && contains(roman, a) {
 		fmt.Println("Вывод ошибки, так как используются одновременно разные системы счисления.")
 	} else {
+		var z string
+		fmt.Scan(&z)
 		fmt.Print("Вывод ошибки, так как строка не является математической операцией.")
 	}
 }
